@@ -1,0 +1,125 @@
+cabal-version:      2.4
+Name:               rats-dao-devs-staking
+Version:            0.1.0.0
+Author:             Manuel Padilla
+Maintainer:         manuelpad@gmail.com
+Build-Type:         Simple
+Copyright:          © 2022 Manuel Padilla
+License:            Apache-2.0
+License-files:      LICENSE
+
+common lang
+    default-language:   Haskell2010
+    ghc-options:
+      -Wall -Wnoncanonical-monad-instances
+      -Wincomplete-uni-patterns -Wincomplete-record-updates
+      -Wredundant-constraints -Widentities -rtsopts
+      -- See Plutus Tx readme
+      -fobject-code -fno-ignore-interface-pragmas -fno-omit-interface-pragmas
+    if flag(defer-plugin-errors)
+        ghc-options: -fplugin-opt PlutusTx.Plugin:defer-errors
+    
+library
+  hs-source-dirs:      src
+  exposed-modules:    
+                      Validators.StakePlusV2.OnChain.Core.OnChainHelpers,
+                      Validators.StakePlusV2.OnChain.Core.Validator,
+                      Validators.StakePlusV2.OnChain.Tokens.Free.Policy,
+                      Validators.StakePlusV2.OnChain.Tokens.OnChainNFTHelpers,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.MasterActions.Fund,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.MasterActions.FundAndMerge,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.MasterActions.SplitFund,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.MasterActions.ClosePool,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.MasterActions.TerminatePool,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.MasterActions.Emergency,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.MasterActions.DeleteFund,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.MasterActions.SendBackFund,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.MasterActions.SendBackDeposit,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.MasterActions.AddScripts,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.MasterActions.DeleteScripts,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.UserActions.Deposit,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.UserActions.Harvest,
+                      Validators.StakePlusV2.OnChain.Tokens.TxID.UserActions.Withdraw,
+                      Validators.StakePlusV2.OnChain.Tokens.PoolID.Policy,
+                      Validators.StakePlusV2.Types.Constants,
+                      Validators.StakePlusV2.Types.DatumsValidator,
+                      Validators.StakePlusV2.Types.Examples,
+                      Validators.StakePlusV2.Types.PABParams,
+                      Validators.StakePlusV2.Types.RedeemersMint,
+                      Validators.StakePlusV2.Types.RedeemersValidator,
+                      Validators.StakePlusV2.Types.Types,
+                      Utils
+
+  --------------------
+  -- Local components
+  --------------------
+  build-depends:  
+                     
+                   
+                     cardano-api           
+                     --, cardano-cli           
+                     , cardano-addresses
+                     , cardano-crypto-class
+                     , cardano-ledger-core
+                     , cardano-ledger-alonzo
+                     , cardano-ledger-babbage
+                     , cardano-ledger-shelley
+                     , cardano-wallet-core
+                     , data-default
+                     , playground-common
+                     , plutonomy
+                     , plutus-chain-index-core
+                     , plutus-contract
+                     , plutus-core
+                     , plutus-ledger
+                     --, plutus-ledger-api
+                     , plutus-ledger-api       
+                     , plutus-ledger-constraints
+                     , plutus-script-utils
+                     , plutus-pab
+                     --, plutus-script-utils
+                     --, plutus-use-cases
+                     , plutus-tx               
+                     , plutus-tx-plugin       
+
+    
+  ------------------------
+  -- Non-IOG dependencies
+  ------------------------
+  build-depends:
+                       aeson
+                     , base ^>= 4.14.1.0
+                     , base16-bytestring
+                     , bech32
+                     , bytestring
+                     --, curl-aeson
+                     --, network
+                     , containers
+                     , freer-extras
+                     , freer-simple
+                     , filepath
+                     -- , hashable
+                     , lens
+                     , openapi3
+                     , prettyprinter
+                     , regex
+                     -- , semigroups
+                     , serialise
+                     -- , streaming
+                     , split
+                     -- , template-haskell
+                     , text
+                     , hex-text
+                     , stm 
+                     , old-locale
+                     , time
+                     , utf8-string
+                     , directory
+                     , MissingH
+                    --  , stm , time, old-locale,directory  en test2
+                    
+  default-language:    Haskell2010
+  ghc-options:         -Wall -fobject-code -fno-ignore-interface-pragmas -fno-omit-interface-pragmas -fno-strictness -fno-spec-constr -fno-specialise
+
+
+
