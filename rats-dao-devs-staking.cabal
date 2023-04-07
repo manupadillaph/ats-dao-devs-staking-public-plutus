@@ -24,7 +24,6 @@ library
   exposed-modules:    
                       Validators.StakePlusV2.OnChain.Core.OnChainHelpers,
                       Validators.StakePlusV2.OnChain.Core.Validator,
-                      Validators.StakePlusV2.OnChain.Tokens.Free.Policy,
                       Validators.StakePlusV2.OnChain.Tokens.OnChainNFTHelpers,
                       Validators.StakePlusV2.OnChain.Tokens.TxID.MasterActions.Fund,
                       Validators.StakePlusV2.OnChain.Tokens.TxID.MasterActions.FundAndMerge,
